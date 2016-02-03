@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root "pages#home", as: :home
+  root "pages#root"
 
   resource :session, only: [:new, :create, :destroy]
 
   namespace :admin do
-    root "users#index"
+    root "users#index", as: :root
 
     resources :users, only: [:index, :edit, :create, :update, :destroy]
     resources :paintings, only: [:index, :edit, :create, :update, :destroy]

@@ -1,7 +1,8 @@
 class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |t|
-      t.boolean :active, default: false, null: false
+      t.boolean :active, default: false, null: false, index: true
+      t.boolean :root,   default: false, null: false
       t.integer :rank,   default: 100,   null: false, index: true
       t.string :path,                    null: false, index: true
       t.string :name,                    null: false
