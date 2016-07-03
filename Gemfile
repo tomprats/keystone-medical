@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.2.2"
 
-gem "rails", github: "rails"
+gem "rails"
 
 gem "pg"
 
@@ -34,9 +34,4 @@ group :development do
   gem "thin"
 end
 
-group :production do
-  gem "unicorn"
-
-  # Heroku compatable assets
-  # gem "rails_12factor"
-end
+gem "unicorn", group: :production

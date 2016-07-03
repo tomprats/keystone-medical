@@ -1,6 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
+      t.integer :organization_id,       null: false, index: true
       t.boolean :admin, default: false, null: false, index: true
       t.string :email,                  null: false, index: true
       t.string :first_name,             null: false

@@ -1,4 +1,6 @@
 class Admin::PagesController < AdminController
+  before_action :require_admin!
+
   def index
     @page = Page.new
     @pages = Page.all

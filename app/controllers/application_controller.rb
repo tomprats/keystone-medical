@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :pages
 
+  def require_user!
+    not_found unless current_user
+  end
+
+  def require_admin!
+    redirect_to root_path unless current_user.admin
+  end
+
   def not_found
     raise ActionController::RoutingError.new("Not Found")
   end

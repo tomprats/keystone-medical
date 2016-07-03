@@ -1,0 +1,33 @@
+.container-fluid
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 New/Edit Organization
+        .panel-body
+          = render partial: "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Organizations
+        .table-responsive
+          %table.table.table-bordered.table-hover
+            %thead
+              %tr
+                %th Name
+                %th Website
+                %th Description
+                %th Created At
+                %th
+            %tbody
+              - @organizations.each do |organization|
+                %tr
+                  %td= organization.name
+                  %td= organization.website
+                  %td= organization.description
+                  %td= organization.created_at_date
+                  %td
+                    = link_to "Edit", edit_admin_organization_path(organization)
+                    &vert;
+                    = link_to "Delete", admin_organization_path(organization), method: :delete, data: { confirm: "Are you sure you want to delete #{organization.name}?" }

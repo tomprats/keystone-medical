@@ -1,5 +1,14 @@
+if Organization.count.zero?
+  tomify = Organization.create(
+    name: "Tomify",
+    website: "https://www.tomify.me"
+  )
+end
+
 if User.count.zero?
+  tomify ||= Organization.find_by(name: "Tomify")
   User.create(
+    organization_id: tomify.id,
     admin: true,
     email: "tprats108@gmail.com",
     first_name: "Tom",
@@ -15,12 +24,5 @@ if Page.count.zero?
     rank: 10,
     path: "home",
     name: "Home"
-  )
-
-  Page.create(
-    active: true,
-    rank: 50,
-    path: "contact",
-    name: "Contact"
   )
 end

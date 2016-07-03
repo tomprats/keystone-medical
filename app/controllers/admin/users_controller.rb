@@ -43,8 +43,9 @@ class Admin::UsersController < AdminController
 
   private
   def user_params
+    params[:user][:organization_id] = current_organization.id unless current_user.admin
     params.require(:user).permit(
-      :admin, :email,
+      :organization_id, :admin, :email,
       :first_name, :last_name,
       :password, :password_confirmation
     )

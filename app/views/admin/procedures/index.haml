@@ -1,0 +1,41 @@
+.container-fluid
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 New/Edit Procedure
+        .panel-body
+          = render partial: "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Procedures
+        .table-responsive
+          %table.table.table-bordered.table-hover
+            %thead
+              %tr
+                - if current_user.admin
+                  %th Organization
+                %th Active
+                %th Rank
+                %th Name
+                %th Codes
+                %th Price
+                %th Created At
+                %th
+            %tbody
+              - @procedures.each do |procedure|
+                %tr
+                  - if current_user.admin
+                    %td= procedure.organization.name
+                  %td= procedure.active ? "Yes" : "No"
+                  %td= procedure.rank
+                  %td= procedure.name
+                  %td= procedure.codes.join(", ")
+                  %td= number_to_currency procedure.price, precision: 0
+                  %td= procedure.created_at_date
+                  %td
+                    = link_to "Edit", edit_admin_procedure_path(procedure)
+                    &vert;
+                    = link_to "Delete", admin_procedure_path(procedure), method: :delete, data: { confirm: "Are you sure you want to delete #{procedure.name}?" }
