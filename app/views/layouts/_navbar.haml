@@ -2,6 +2,7 @@
   .admin-navbar.navbar.navbar-default.center
     .container-fluid
       %ul.nav.navbar-nav
+        %li= link_to "App", admin_apps_path
         %li= link_to "Users", admin_users_path
         %li= link_to "Pages", admin_pages_path
         %li= link_to "Logout", session_path, method: :delete

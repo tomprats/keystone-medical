@@ -1,0 +1,25 @@
+.container-fluid
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 App
+        .panel-body
+          = render partial: "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Images
+        %table.table.table-bordered.table-hover
+          %thead
+            %tr
+              %th Name
+              %th Image
+          %tbody
+            %tr
+              %td Share Image
+              - if app.share_image.present?
+                %td= image_tag app.share_image.square
+              - else
+                %td None

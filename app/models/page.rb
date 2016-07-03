@@ -9,6 +9,8 @@ class Page < ApplicationRecord
   before_save :set_root, if: :root_changed?
   before_destroy { |page| page.root.blank? }
 
+  to_html :text
+
   def self.root
     find_by(root: true)
   end
