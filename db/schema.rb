@@ -15,7 +15,19 @@ ActiveRecord::Schema.define(version: 20160701022230) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "apps", force: :cascade do |t|
+    t.string "share_title"
+    t.string "share_description"
+    t.string "share_image_id"
+    t.string "contact_email"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "google_analytics_code"
+  end
+
   create_table "organizations", force: :cascade do |t|
+    t.string   "path",        null: false
     t.string   "name",        null: false
     t.string   "website",     null: false
     t.string   "logo"
@@ -26,7 +38,6 @@ ActiveRecord::Schema.define(version: 20160701022230) do
 
   create_table "pages", force: :cascade do |t|
     t.boolean  "active",     default: false, null: false
-    t.boolean  "root",       default: false, null: false
     t.integer  "rank",       default: 100,   null: false
     t.string   "path",                       null: false
     t.string   "name",                       null: false

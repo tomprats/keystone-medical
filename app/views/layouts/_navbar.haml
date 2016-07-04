@@ -2,15 +2,16 @@
   .admin-navbar.navbar.navbar-default.center
     .container-fluid
       %ul.nav.navbar-nav
-          %li= link_to "App", admin_apps_path
+        %li= link_to "App", admin_apps_path
         - if current_user.admin
           %li= link_to "Pages", admin_pages_path
           %li= link_to "Organizations", admin_organizations_path
         %li= link_to "Users", admin_users_path
         %li= link_to "Procedures", admin_procedures_path
         %li= link_to "Logout", session_path, method: :delete
-%nav.navbar.navbar-default.center
-  .container-fluid
-    %ul.nav.navbar-nav
-      - pages.each do |page|
-        %li= link_to page.name, page_path(page.path)
+-#
+  %nav.navbar.navbar-default.center
+    .container-fluid
+      %ul.nav.navbar-nav
+        - pages.each do |page|
+          %li= link_to page.name, page_path(page.path)

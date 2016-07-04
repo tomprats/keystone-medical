@@ -1,0 +1,18 @@
+.container-fluid
+  .row
+    .col-md-6.col-sm-offset-3
+      .bs-callout.bs-callout-primary
+        %h4= @organization.name
+        %p= @organization.description
+        = link_to "Visit Website", @organization.website
+      .table-responsive
+        %table.table.table-hover
+          %thead
+            %tr
+              %th Procedure
+              %th Price
+          %tbody
+            - @organization.procedures.active.each do |procedure|
+              %tr
+                %td= procedure.name
+                %td= number_to_currency procedure.price, precision: 0

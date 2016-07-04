@@ -42,9 +42,7 @@ class Admin::PagesController < AdminController
   private
   def page_params
     params.require(:page).permit(
-      :active, :root,
-      :rank, :path,
-      :name, :text
+      :active, :rank, :path, :name, :text
     )
   end
 end

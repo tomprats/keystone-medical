@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root "pages#root"
+  root "pages#show"
 
   resource :session, only: [:new, :create, :destroy]
+  resources :pricing, only: [:show], param: :path
 
   namespace :admin do
     root "procedures#index", as: :root

@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "variables";
+@import "bootstrap-callout";
 @import "font-awesome";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,700|Dosis:400,700);
 
@@ -17,6 +18,9 @@ a {
   &:active, &:focus, &:hover {
     color: $blue;
   }
+}
+h1, h2, h3 {
+  text-align: center;
 }
 em {
   font-size: 24px;

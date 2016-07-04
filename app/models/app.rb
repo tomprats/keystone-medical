@@ -5,7 +5,10 @@ class App < ApplicationRecord
 
   def self.default
     @app ||= App.first
-    @app ||= App.create
+    @app ||= App.create(
+      share_title: "Keystone High Value Medical Care",
+      share_description: "Free Market Medicine"
+    )
   end
 
   private

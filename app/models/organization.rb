@@ -4,6 +4,7 @@ class Organization < ApplicationRecord
   validates_format_of :website, with: /\Ahttps?:\/\//, message: "should contain http(s)"
 
   has_many :users
+  has_many :procedures
 
   def tomify?
     name == "Tomify"
