@@ -16,3 +16,7 @@
               %tr
                 %td= procedure.name
                 %td= number_to_currency procedure.price, precision: 0
+      - if page = Page.find_by(name: "Pricing Disclaimer")
+        .bs-callout.bs-callout-danger
+          %h4 Disclaimer
+          %p The prices seen here may not apply to you. Click #{link_to "here", "/#{page.path}"} for more information.

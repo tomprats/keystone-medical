@@ -1,7 +1,7 @@
 - title = content_for(:meta_title) ? yield(:meta_title) : app.share_title
 - description = content_for(:meta_description) ? yield(:meta_description) : app.share_description
 - image = yield(:meta_image) if content_for(:meta_image)
-- image ||= app.share_image.file.url if app.share_image.present?
+-# image ||= app.share_image.file.url if app.share_image.present?
 - url = request.original_url
 
 %title= title

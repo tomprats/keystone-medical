@@ -4,23 +4,24 @@
       %h1 Keystone High Value Medical Care
       = @page.text_to_html
   .row
-    .col-sm-6.col-sm-offset-1
+    .col-sm-6.col-sm-offset-3
       .bs-callout.bs-callout-primary
         %h4 Mission
-        %p To allow the consumer, providers, and vendors to search and retrieve cost data regarding procedures done at facilities in central Pennsylvania
+        = app.mission_to_html
         - if page = Page.find_by(name: "Why Transparent Pricing?")
           = link_to page.name, "/#{page.path}"
-    .col-sm-4
-      .bs-callout.bs-callout-danger
-        %h4 Disclaimers
-        %p Keystone High Value Medical Care is an pledge to be open, but is in no way legally binding
-        - if page = Page.find_by(name: "Pricing Disclaimer")
-          = link_to page.name, "/#{page.path}"
   .row
-    .col-md-6.col-sm-offset-3
+    .col-sm-10.col-sm-offset-1
       %h1 Providers
-      - Organization.joins(:procedures).where(procedures: { active: true }).each do |organization|
-        .bs-callout.bs-callout-warning
-          %h4= organization.name
-          %p= organization.description
-          = link_to "View Procedures", pricing_path(organization.path)
+      .row
+        - Organization.joins(:procedures).where(procedures: { active: true }).each do |organization|
+          .col-sm-6
+            .bs-callout.bs-callout-warning
+              %h4= organization.name
+              %p= organization.description
+              = link_to "View Procedures", pricing_path(organization.path)
+  .row
+    .col-sm-10.col-sm-offset-1
+      .bs-callout.bs-callout-danger
+        %h4 Disclaimer
+        = app.disclaimer_to_html

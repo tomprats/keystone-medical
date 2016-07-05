@@ -16,6 +16,18 @@
     .col-sm-10
       = f.email_field :contact_email, placeholder: "Contact Email", class: "form-control"
   .form-group
+    = f.label :mission, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :mission, placeholder: "Mission", class: "form-control"
+  .form-group
+    = f.label :disclaimer, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :disclaimer, placeholder: "Disclaimer", class: "form-control"
+  .form-group
+    = f.label :twitter, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :twitter, placeholder: "Twitter", class: "form-control"
+  .form-group
     = f.label :twitter, class: "col-sm-2 control-label"
     .col-sm-10
       = f.text_field :twitter, placeholder: "Twitter", class: "form-control"

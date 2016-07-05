@@ -1,7 +1,9 @@
 class App < ApplicationRecord
-  mount_uploader :share_image, ShareImageUploader
+  # mount_uploader :share_image, ShareImageUploader
 
   validate :only_one
+
+  to_html :mission, :disclaimer
 
   def self.default
     @app ||= App.first

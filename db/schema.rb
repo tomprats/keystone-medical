@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701022230) do
+ActiveRecord::Schema.define(version: 20160705230240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20160701022230) do
     t.string "facebook"
     t.string "instagram"
     t.string "google_analytics_code"
+    t.text   "mission"
+    t.text   "disclaimer"
   end
 
   create_table "organizations", force: :cascade do |t|
