@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705230240) do
+ActiveRecord::Schema.define(version: 20160708014412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 20160705230240) do
     t.string   "name",        null: false
     t.string   "website",     null: false
     t.string   "logo"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "kind",        null: false
   end
 
   create_table "pages", force: :cascade do |t|
@@ -53,16 +54,16 @@ ActiveRecord::Schema.define(version: 20160705230240) do
   end
 
   create_table "procedures", force: :cascade do |t|
-    t.integer  "organization_id",                 null: false
-    t.boolean  "active",          default: false, null: false
-    t.integer  "rank",            default: 100,   null: false
-    t.string   "name",                            null: false
-    t.string   "codes",           default: [],    null: false, array: true
-    t.integer  "price",                           null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "active",      default: false, null: false
+    t.integer  "rank",        default: 100,   null: false
+    t.string   "name",                        null: false
+    t.string   "codes",       default: [],    null: false, array: true
+    t.integer  "price",                       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "practice_id",                 null: false
+    t.integer  "facility_id",                 null: false
     t.index ["active"], name: "index_procedures_on_active", using: :btree
-    t.index ["organization_id"], name: "index_procedures_on_organization_id", using: :btree
     t.index ["rank"], name: "index_procedures_on_rank", using: :btree
   end
 

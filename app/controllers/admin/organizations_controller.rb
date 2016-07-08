@@ -42,7 +42,7 @@ class Admin::OrganizationsController < AdminController
   private
   def organization_params
     params.require(:organization).permit(
-      :path, :name, :website, :description
+      :path, :name, :kind, :website, :description
     )
   end
 end

@@ -2,6 +2,7 @@ if Organization.count.zero?
   tomify = Organization.create(
     path: "tomify",
     name: "Tomify",
+    kind: "None",
     website: "https://www.tomify.me"
   )
 end

@@ -1,7 +1,8 @@
 class Procedure < ApplicationRecord
-  validates_presence_of :organization, :name, :price
+  validates_presence_of :practice, :facility, :name, :price
 
-  belongs_to :organization
+  belongs_to :practice, class_name: Organization
+  belongs_to :facility, class_name: Organization
 
   scope :active, -> { where(active: true) }
   default_scope { order(:rank) }

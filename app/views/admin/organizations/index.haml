@@ -16,16 +16,16 @@
             %thead
               %tr
                 %th Name
+                %th Kind
                 %th Website
-                %th Description
                 %th Created At
                 %th
             %tbody
               - @organizations.each do |organization|
                 %tr
                   %td= organization.name
+                  %td= organization.kind
                   %td= organization.website
-                  %td= organization.description
                   %td= organization.created_at_date
                   %td
                     = link_to "Edit", edit_admin_organization_path(organization)

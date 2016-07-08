@@ -15,8 +15,8 @@
           %table.table.table-bordered.table-hover
             %thead
               %tr
-                - if current_user.admin
-                  %th Organization
+                %th Practice
+                %th Facility
                 %th Active
                 %th Rank
                 %th Name
@@ -27,8 +27,8 @@
             %tbody
               - @procedures.each do |procedure|
                 %tr
-                  - if current_user.admin
-                    %td= procedure.organization.name
+                  %td= procedure.practice.name
+                  %td= procedure.facility.name
                   %td= procedure.active ? "Yes" : "No"
                   %td= procedure.rank
                   %td= procedure.name

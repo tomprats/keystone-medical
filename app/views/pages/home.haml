@@ -14,11 +14,11 @@
     .col-sm-10.col-sm-offset-1
       %h1 Providers
       .row
-        - Organization.joins(:procedures).where(procedures: { active: true }).each do |organization|
+        - Organization.facilities.each do |organization|
           .col-sm-6
             .bs-callout.bs-callout-warning
               %h4= organization.name
-              %p= organization.description
+              = organization.description_to_html
               = link_to "View Procedures", pricing_path(organization.path)
   .row
     .col-sm-10.col-sm-offset-1

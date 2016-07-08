@@ -8,13 +8,17 @@
     .col-sm-10
       = f.text_field :name, placeholder: "Name", class: "form-control"
   .form-group
+    = f.label :kind, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.select :kind, Organization.kinds, {}, class: "form-control"
+  .form-group
     = f.label :website, class: "col-sm-2 control-label"
     .col-sm-10
       = f.url_field :website, placeholder: "Website", class: "form-control"
   .form-group
     = f.label :description, class: "col-sm-2 control-label"
     .col-sm-10
-      = f.text_field :description, placeholder: "Description", class: "form-control"
+      = f.text_area :description, placeholder: "Description", class: "form-control"
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: "btn btn-primary"

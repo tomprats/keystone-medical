@@ -1,9 +1,25 @@
 = form_for [:admin, @procedure], html: { class: "form-horizontal" } do |f|
   - if current_user.admin
     .form-group
-      = f.label :organization_id, class: "col-sm-2 control-label"
+      = f.label :practice_id, class: "col-sm-2 control-label"
       .col-sm-10
-        = f.select :organization_id, options_from_collection_for_select(Organization.all, :id, :name), {}, { class: "form-control" }
+        = f.collection_select :practice_id, Organization.practices, :id, :name, {}, { class: "form-control" }
+    .form-group
+      = f.label :facility_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :facility_id, Organization.facilities, :id, :name, {}, { class: "form-control" }
+  - elsif current_user.organization.practice?
+    = f.hidden_field :practice_id, current_user.organization_id
+    .form-group
+      = f.label :facility_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :facility_id, Organization.facilities, :id, :name, {}, { class: "form-control" }
+  - elsif current_user.organization.facility?
+    = f.hidden_field :facility_id, current_user.organization_id
+    .form-group
+      = f.label :practice_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :practice_id, Organization.practices, :id, :name, {}, { class: "form-control" }
   .form-group
     = f.label :active, class: "col-sm-2 control-label"
     .col-sm-10

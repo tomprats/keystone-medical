@@ -3,18 +3,24 @@
     .col-md-6.col-sm-offset-3
       .bs-callout.bs-callout-primary
         %h4= @organization.name
-        %p= @organization.description
-        = link_to "Visit Website", @organization.website
+        = @organization.description_to_html
+        %p
+          Click
+          = link_to "here", @organization.website, target: :_blank
+          for more information about the #{@organization.kind.downcase} and procedures.
       .table-responsive
         %table.table.table-hover
           %thead
             %tr
               %th Procedure
+              %th= @organization.practice? ? "Procedure" : "Practice"
               %th Price
           %tbody
             - @organization.procedures.active.each do |procedure|
               %tr
                 %td= procedure.name
+                - organization = @organization.practice? ? procedure.facility : procedure.practice
+                %td= link_to organization.name, pricing_path(organization.path)
                 %td= number_to_currency procedure.price, precision: 0
       - if page = Page.find_by(name: "Pricing Disclaimer")
         .bs-callout.bs-callout-danger
