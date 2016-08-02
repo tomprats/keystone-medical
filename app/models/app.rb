@@ -1,5 +1,6 @@
 class App < ApplicationRecord
-  # mount_uploader :share_image, ShareImageUploader
+  mount_uploader :share_image, ShareImageUploader
+  mount_uploader :logo_image, ImageUploader
 
   validate :only_one
 

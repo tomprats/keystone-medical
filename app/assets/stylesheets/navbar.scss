@@ -11,11 +11,21 @@
 }
 
 .admin-navbar {
-  // margin-bottom: 0;
+  margin-bottom: 0;
   border-radius: 0;
   border-color: $theme;
   background-color: $theme;
   .navbar-nav > li > a {
     color: $white;
+  }
+}
+
+nav .logo {
+  max-width: 100%;
+}
+
+@media screen and (min-width: $screen-md) {
+  nav .logo {
+    width: 300px;
   }
 }

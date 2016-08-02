@@ -12,6 +12,10 @@
     .col-sm-10
       = f.file_field :share_image, class: "form-control"
   .form-group
+    = f.label :logo_image, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.file_field :logo_image, class: "form-control"
+  .form-group
     = f.label :contact_email, class: "col-sm-2 control-label"
     .col-sm-10
       = f.email_field :contact_email, placeholder: "Contact Email", class: "form-control"

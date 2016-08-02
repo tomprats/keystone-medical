@@ -9,9 +9,9 @@
         %li= link_to "Users", admin_users_path
         %li= link_to "Procedures", admin_procedures_path
         %li= link_to "Logout", session_path, method: :delete
--#
-  %nav.navbar.navbar-default.center
-    .container-fluid
-      %ul.nav.navbar-nav
-        - pages.each do |page|
-          %li= link_to page.name, page_path(page.path)
+- if app.logo_image.present?
+  %nav.container-fluid
+    .row.bg-warning
+      .logo
+        = link_to root_path do
+          = image_tag app.logo_image, class: "img-responsive"

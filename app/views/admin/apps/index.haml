@@ -6,7 +6,6 @@
           %h4 App
         .panel-body
           = render partial: "form"
--#
   .row
     .col-xs-12
       .panel.panel-default
@@ -21,6 +20,12 @@
             %tr
               %td Share Image
               - if app.share_image.present?
-                %td= image_tag app.share_image.square
+                %td= image_tag app.share_image, class: "img-responsive"
+              - else
+                %td None
+            %tr
+              %td Logo Image
+              - if app.logo_image.present?
+                %td= image_tag app.logo_image, class: "img-responsive"
               - else
                 %td None

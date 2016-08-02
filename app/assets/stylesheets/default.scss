@@ -30,6 +30,10 @@ em {
   @include button-variant(white, $theme, $theme);
 }
 
+.bg-warning {
+  background-color: lighten($brand-warning, 10%);
+}
+
 @for $i from 1 through 8 {
   .spacer-#{$i*10} {
     padding-bottom: $i*10px;
