@@ -5,8 +5,8 @@ class Organization < ApplicationRecord
 
   has_many :users
 
-  scope :practices, -> { where(kind: "Practice") }
-  scope :facilities, -> { where(kind: "Facility") }
+  scope :practices, -> { where("kind ILIKE ?", "%Practice%") }
+  scope :facilities, -> { where("kind ILIKE ?", "%Facility%") }
 
   to_html :description
 
@@ -15,14 +15,14 @@ class Organization < ApplicationRecord
   end
 
   def practice?
-    kind == "Practice"
+    kind.include? "Practice"
   end
 
   def facility?
-    kind == "Facility"
+    kind.include? "Facility"
   end
 
   def self.kinds
-    ["None", "Practice", "Facility"]
+    ["None", "Practice", "Facility", "Practice + Facility"]
   end
 end
