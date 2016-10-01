@@ -4,12 +4,19 @@
       %h1 Keystone High Value Medical Care
       = @page.text_to_html
   .row
-    .col-sm-6.col-sm-offset-3
-      .bs-callout.bs-callout-primary
-        %h4 Mission
-        = app.mission_to_html
-        - if page = Page.find_by(name: "Why Transparent Pricing?")
-          = link_to page.name, "/#{page.path}"
+    .col-sm-10.col-sm-offset-1
+      .row
+        .col-md-6
+          .bs-callout.bs-callout-primary
+            %h4 Mission
+            = app.mission_to_html
+            - if page = Page.find_by(name: "Why Transparent Pricing?")
+              = link_to page.name, "/#{page.path}"
+        .col-md-6
+          .bs-callout.bs-callout-primary
+            %h4= image_tag "fmma.png", width: 200
+            %p The PA Chapter of the FMMA is having a conference on October 14, 2016. Register below to join us in learning about potential benefits of the free market forces.
+            = link_to "More Information", "https://www.cvent.com/c/express/bfbef30f-fcf2-4438-9e17-735425768118", target: :_blank
   .row
     .col-sm-10.col-sm-offset-1
       %h1 Providers
