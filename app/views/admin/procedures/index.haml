@@ -5,7 +5,14 @@
         .panel-heading
           %h4 New/Edit Procedure
         .panel-body
-          = render partial: "form"
+          = render "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Import Procedures
+        .panel-body
+          = render "import_form"
   .row
     .col-xs-12
       .panel.panel-default

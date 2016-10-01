@@ -1,3 +1,5 @@
+require "csv"
+
 class Admin::ProceduresController < AdminController
   def index
     @procedure = Procedure.new

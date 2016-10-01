@@ -1,0 +1,39 @@
+= form_for :procedure, url: admin_import_procedures_path, html: { class: "form-horizontal", multipart: true } do |f|
+  - if current_user.admin
+    .form-group
+      = f.label :practice_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :practice_id, Organization.practices, :id, :name, {}, { class: "form-control" }
+    .form-group
+      = f.label :facility_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :facility_id, Organization.facilities, :id, :name, {}, { class: "form-control" }
+  - elsif current_user.organization.practice?
+    = f.hidden_field :practice_id, current_user.organization_id
+    .form-group
+      = f.label :facility_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :facility_id, Organization.facilities, :id, :name, {}, { class: "form-control" }
+  - elsif current_user.organization.facility?
+    = f.hidden_field :facility_id, current_user.organization_id
+    .form-group
+      = f.label :practice_id, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.collection_select :practice_id, Organization.practices, :id, :name, {}, { class: "form-control" }
+  .form-group
+    = f.label :active, class: "col-sm-2 control-label"
+    .col-sm-10
+      .checkbox
+        %label
+          = f.check_box :active
+  .form-group
+    = f.label :rank, "Starting Rank", class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.number_field :rank, placeholder: "Rank", class: "form-control"
+  .form-group
+    = label_tag :file, "File", class: "col-sm-2 control-label"
+    .col-sm-10
+      = file_field_tag :file, class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Import Procedures", class: "btn btn-primary"

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :organizations, only: [:index, :edit, :create, :update, :destroy]
     resources :users, only: [:index, :edit, :create, :update, :destroy]
     resources :procedures, only: [:index, :edit, :create, :update, :destroy]
+    resources :import_procedures, only: :create
   end
 
   get ":path", to: "pages#show", as: :page
